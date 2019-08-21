@@ -12,18 +12,20 @@
 */
 
 int main(int argc, char const *argv[]) {
+  unsigned int results;
   auto start = std::chrono::high_resolution_clock::now();
 
   if (argc >= 3) {
     Attacker attack(argv[1], argv[2], (unsigned short) std::strtoul(argv[3], NULL, 0));
     attack.loadDictionary();
-    attack.crack();
+    results = attack.crack();
   } else
       std::cout << "Execution: ./dictAttacker <hashedPasswordsPath> <dictionaryPath> <mode>" << std::endl;
 
   auto end = std::chrono::high_resolution_clock::now();
 
   std::chrono::duration<double> elapsedSeconds = end - start;
+  std::cout << "Cracked " << results << "." << std::endl;
   std::cout << "\nTook: " << elapsedSeconds.count() << "s." << std::endl;
   return 0;
 }

@@ -14,5 +14,5 @@ private:
 public:
   Attacker(std::string, std::string, unsigned short int);
   void loadDictionary();
-  void crack();
+  unsigned int crack();
 };
