@@ -2,7 +2,7 @@
 
 Terminal based password attacker (SHA-512) written in C++.
 
-The program is called with three arguments (though two can do the job). The first is the path to the file of the hashed passwords that you have found. The second is the path to the dictionary file you have (the rockyou.txt file is included though) and the last one is the mode in which the program will operate.
+The program is called with three arguments (though two can do the job). The first is the path to the file of the hashed passwords that you have found. The second is the path to the dictionary file you have and the last one is the mode in which the program will operate.
 
 Mode 1 -> The program tests every hash with every word from the dictionary hashed.
 Mode 2 -> The program tests every hash with every word but it varies the word by first capitalizing the first letter, secondly by capitalizing the last letter and lastly by capitalizing the first and the last as well.
