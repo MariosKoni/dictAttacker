@@ -15,11 +15,24 @@ int main(int argc, char const *argv[]) {
   unsigned int results;
 
   if (argc >= 3) {
+
+    #if defined(__linux__) || defined(__APPLE__) || defined(__MACH__)
+    system("clear");
+    #elif _WIN32
+    system("cls");
+    #endif
+
     auto start = std::chrono::high_resolution_clock::now();
-    
-    Attacker attack(argv[1], argv[2], (unsigned short) std::strtoul(argv[3], NULL, 0));
-    attack.loadDictionary();
-    results = attack.crack();
+
+    if (argv[3] != NULL) {
+      Attacker attack(argv[1], argv[2], (unsigned short) std::strtoul(argv[3], NULL, 0));
+      attack.loadDictionary();
+      results = attack.crack();
+    } else {
+        Attacker attack(argv[1], argv[2]);
+        attack.loadDictionary();
+        results = attack.crack();
+      }
 
     auto end = std::chrono::high_resolution_clock::now();
 
